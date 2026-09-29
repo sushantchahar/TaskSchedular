@@ -10,6 +10,7 @@ class Job
 {
 // Attributes
 private:
+    static int UniqueId;
     int Id;
     std::string _Name;
     std::string _Description;
@@ -20,7 +21,7 @@ private:
 // Operations
 public:
     // Constructor
-    Job(int id, std::string name, std::string description, ExecutionState state, Priority priority, std::unique_ptr<Work> work);
+    Job(std::string name, std::string description, ExecutionState state, Priority priority, std::unique_ptr<Work> work);
 
     // Getters
     const std::string GetName() const;
@@ -28,7 +29,7 @@ public:
     const int GetId() const;
     const Priority GetPriority() const;
     const ExecutionState GetState() const;
-    const Work& GetWork() const;
+    Work& GetWork() const;
 
     // Setters
     void SetPriority(Priority priority);

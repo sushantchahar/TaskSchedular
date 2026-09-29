@@ -6,7 +6,7 @@ class Work
 // Operations
 public:
     virtual void Execute() = 0;
-    ~Work() = default;
+    virtual ~Work() = default;
 };
 
 
