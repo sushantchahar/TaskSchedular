@@ -21,6 +21,8 @@ private:
 // Operations
 public:
     // Constructor
+    // Empty Job
+    Job();
     Job(std::string name, std::string description, ExecutionState state, Priority priority, std::unique_ptr<Work> work);
 
     // Getters
