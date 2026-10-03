@@ -13,6 +13,7 @@ public:
     void ExecuteJob();
     void ReceiveJob(Job job);
     bool HasJob();
+    void TriggerWorker();
 };
 
 

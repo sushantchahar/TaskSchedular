@@ -16,10 +16,17 @@ void Schedular::DispatchJob()
     if (SelectedJob)
     {
         SelectedWorker.ReceiveJob(move(SelectedJob.value()));
+        SelectedWorker.TriggerWorker();
     }
 }
 
 Worker& Schedular::SelectWorker()
 {
     return _Worker;
+}
+
+// temporary for debugging and testing
+void Schedular::ScheduleJob()
+{
+    Schedular::DispatchJob();
 }

@@ -14,6 +14,8 @@ public:
     std::optional<Job> SelectJob();
     Worker& SelectWorker();
     void DispatchJob();
+    // temporary for debugging and testing
+    void ScheduleJob();
 };
 
 #endif //TASKSCHEDULAR_SCHEDULAR_H

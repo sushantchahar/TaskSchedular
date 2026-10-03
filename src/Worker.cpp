@@ -5,17 +5,28 @@ using namespace std;
 void Worker::ReceiveJob(Job job)
 {
     _CurrentJob = move(job);
-    cout << boolalpha << "Has worker job : " << HasJob() << "\n";
 }
 
 bool Worker::HasJob()
 {
-    if (_CurrentJob && _CurrentJob.has_value()) return true;
-    return false;
+    return _CurrentJob.has_value();
 }
 
 void Worker::ExecuteJob()
 {
-    cout << "Worker executed the job" << "\n";
+    if (Worker::HasJob() == false)
+    {
+        // Debugging print statement
+        cout << "Worker has not valid job. So cannot execute the work" << "\n";
+        return;
+    }
     _CurrentJob->GetWork().Execute();
+
+    // Once job completes
+    _CurrentJob.reset();
+}
+
+void Worker::TriggerWorker()
+{
+    Worker::ExecuteJob();
 }
