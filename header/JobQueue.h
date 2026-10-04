@@ -1,17 +1,15 @@
 #ifndef TASKSCHEDULAR_JOBQUEUE_H
 #define TASKSCHEDULAR_JOBQUEUE_H
 #include <queue>
-#include "Job.h"
-#include <optional>
 
 class JobQueue
 {
 private:
-    std::queue<Job> _JobQueue;
+    std::queue<int> _JobQueue;
 
 public:
-    void AddJob(Job& job);
-    std::optional<Job> GetJob();
+    void AddJob(const int id);
+    int GetJobId();
     bool IsEmpty() const;
 };
 

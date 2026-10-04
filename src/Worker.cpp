@@ -2,10 +2,9 @@
 #include <iostream>
 using namespace std;
 
-void Worker::ReceiveJob(Job job)
+void Worker::ReceiveJob(Job& job)
 {
-    _CurrentJob = move(job);
-    _CurrentJob->SetState(ExecutionState::Running);
+    _CurrentJob = ref(job);
 }
 
 bool Worker::HasJob()
@@ -21,16 +20,9 @@ void Worker::ExecuteJob()
         cout << "Worker has not valid job. So cannot execute the work" << "\n";
         return;
     }
-    bool IsWorkExecuted = _CurrentJob->GetWork().Execute();
-    if (IsWorkExecuted)
-    {
-        _CurrentJob->SetState(ExecutionState::Completed);
-    }
 
-    else
-    {
-        _CurrentJob->SetState(ExecutionState::Failed);
-    }
+    auto& job = _CurrentJob->get();
+    job.GetWork().Execute();
 
     // Once job completes
     _CurrentJob.reset();

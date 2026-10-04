@@ -6,12 +6,12 @@
 class Worker
 {
 private:
-    std::optional<Job> _CurrentJob;
+    std::optional<std::reference_wrapper<Job>> _CurrentJob;
 
 public:
     Worker() = default;
     void ExecuteJob();
-    void ReceiveJob(Job job);
+    void ReceiveJob(Job& job);
     bool HasJob();
     void TriggerWorker();
 };

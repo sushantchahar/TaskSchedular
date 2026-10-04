@@ -1,23 +1,17 @@
 #include "../header/JobQueue.h"
 using namespace std;
 
-void JobQueue::AddJob(Job& job)
+void JobQueue::AddJob(const int id)
 {
-    // Job is added to queue and now it can be processed further
-    job.SetState(ExecutionState::Pending);
-    _JobQueue.push(move(job));
+    _JobQueue.push(id);
 }
 
-optional<Job> JobQueue::GetJob()
+int JobQueue::GetJobId()
 {
-    if (JobQueue::IsEmpty())
-    {
-        return nullopt;
-    }
-
-    Job job = move(_JobQueue.front());
+    if (IsEmpty()) return -1;
+    const int id = _JobQueue.front();
     _JobQueue.pop();
-    return move(job);
+    return id;
 }
 
 bool JobQueue::IsEmpty() const

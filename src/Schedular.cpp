@@ -1,11 +1,14 @@
 #include "../header/Schedular.h"
 using namespace std;
 
-Schedular::Schedular(JobQueue& jobQueue, Worker& worker) : _JobQueue(jobQueue), _Worker(worker) {}
+Schedular::Schedular(JobQueue& jobQueue, Worker& worker, JobRegistry& registry) : _JobQueue(jobQueue), _Worker(worker), _JobRegistry(registry) {}
 
-optional<Job> Schedular::SelectJob()
+optional<reference_wrapper<Job>> Schedular::SelectJob()
 {
-    return move(_JobQueue.GetJob());
+    const int id = _JobQueue.GetJobId();
+    if (id == -1) return nullopt;
+    auto job = _JobRegistry.GetJob(id);
+    return job;
 }
 
 void Schedular::DispatchJob()
@@ -15,7 +18,7 @@ void Schedular::DispatchJob()
 
     if (SelectedJob)
     {
-        SelectedWorker.ReceiveJob(move(SelectedJob.value()));
+        SelectedWorker.ReceiveJob(SelectedJob->get());
         SelectedWorker.TriggerWorker();
     }
 }
