@@ -23,7 +23,7 @@ public:
     // Constructor
     // Empty Job
     Job();
-    Job(std::string name, std::string description, ExecutionState state, Priority priority, std::unique_ptr<Work> work);
+    Job(std::string name, std::string description, Priority priority, std::unique_ptr<Work> work);
 
     // Getters
     const std::string GetName() const;
@@ -35,6 +35,7 @@ public:
 
     // Setters
     void SetPriority(Priority priority);
+    void SetState(ExecutionState state);
 };
 
 #endif //TASKSCHEDULAR_JOB_H

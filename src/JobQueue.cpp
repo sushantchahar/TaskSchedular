@@ -3,6 +3,8 @@ using namespace std;
 
 void JobQueue::AddJob(Job& job)
 {
+    // Job is added to queue and now it can be processed further
+    job.SetState(ExecutionState::Pending);
     _JobQueue.push(move(job));
 }
 

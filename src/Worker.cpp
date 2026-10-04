@@ -5,6 +5,7 @@ using namespace std;
 void Worker::ReceiveJob(Job job)
 {
     _CurrentJob = move(job);
+    _CurrentJob->SetState(ExecutionState::Running);
 }
 
 bool Worker::HasJob()
@@ -20,7 +21,16 @@ void Worker::ExecuteJob()
         cout << "Worker has not valid job. So cannot execute the work" << "\n";
         return;
     }
-    _CurrentJob->GetWork().Execute();
+    bool IsWorkExecuted = _CurrentJob->GetWork().Execute();
+    if (IsWorkExecuted)
+    {
+        _CurrentJob->SetState(ExecutionState::Completed);
+    }
+
+    else
+    {
+        _CurrentJob->SetState(ExecutionState::Failed);
+    }
 
     // Once job completes
     _CurrentJob.reset();

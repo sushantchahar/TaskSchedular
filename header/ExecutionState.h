@@ -4,10 +4,10 @@
 enum ExecutionState
 {
     Created,
-    Queued,
-    Failed,
+    Pending,
+    Running,
     Completed,
-    Cancelled
+    Failed
 };
 
 #endif //TASKSCHEDULAR_EXECUTIONSTATE_H

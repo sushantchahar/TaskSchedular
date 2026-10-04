@@ -4,10 +4,10 @@ using namespace std;
 
 int Job::UniqueId = 0;
 
-Job::Job(std::string name, std::string description, ExecutionState state, Priority priority, unique_ptr<Work> work) :
+Job::Job(std::string name, std::string description, Priority priority, unique_ptr<Work> work) :
 _Name(name),
 _Description(description),
-_State(state),
+_State(ExecutionState::Created),
 _Priority(priority),
 _Work(move(work))
 {
@@ -23,3 +23,4 @@ const Priority Job::GetPriority() const {return _Priority;}
 Work& Job::GetWork() const {return *_Work;}
 
 void Job::SetPriority(Priority priority) {_Priority = priority;}
+void Job::SetState(ExecutionState state) {_State = state;}
