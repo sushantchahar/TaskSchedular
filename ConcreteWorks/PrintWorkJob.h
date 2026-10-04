@@ -6,8 +6,7 @@
 class PrintWorkJob : public Work
 {
 public:
-    void Execute() override;
-    // ~PrintWorkJob() override;
+    bool Execute() override;
 };
 
 

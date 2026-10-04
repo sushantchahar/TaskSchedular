@@ -18,7 +18,6 @@ int main()
     Job job(
         "Ownership Test",
         "Test JobQueue to Scheduler to Worker ownership transfer",
-        ExecutionState::Created,
         Priority::Medium,
         std::move(work)
     );

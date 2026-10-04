@@ -2,7 +2,7 @@
 #include "Print1toNnumbers.h"
 using namespace std;
 
-void Print1toNnumbers::Execute()
+bool Print1toNnumbers::Execute()
 {
     cout << "Print number from 1 to n" << "\n";
     int n = 12;
@@ -12,4 +12,6 @@ void Print1toNnumbers::Execute()
     }
 
     cout << "\n";
+
+    return true;
 }

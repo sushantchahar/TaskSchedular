@@ -5,8 +5,8 @@ Schedular::Schedular(JobQueue& jobQueue, Worker& worker, JobRegistry& registry) 
 
 optional<reference_wrapper<Job>> Schedular::SelectJob()
 {
+    if (_JobQueue.IsEmpty()) return nullopt;
     const int id = _JobQueue.GetJobId();
-    if (id == -1) return nullopt;
     auto job = _JobRegistry.GetJob(id);
     return job;
 }

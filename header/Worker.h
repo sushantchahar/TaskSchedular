@@ -6,14 +6,16 @@
 class Worker
 {
 private:
+    std::string _Name;
     std::optional<std::reference_wrapper<Job>> _CurrentJob;
 
 public:
-    Worker() = default;
+    explicit Worker(const std::string& name);
     void ExecuteJob();
     void ReceiveJob(Job& job);
     bool HasJob();
     void TriggerWorker();
+    const std::string GetName();
 };
 
 

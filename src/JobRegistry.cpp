@@ -3,6 +3,7 @@ using namespace std;
 
 void JobRegistry::AddJob(Job& job)
 {
+    job.SetState(ExecutionState::Pending);
     _Jobs.emplace(job.GetId(), move(job));
 }
 

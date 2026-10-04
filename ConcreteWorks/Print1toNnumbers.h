@@ -5,7 +5,9 @@
 class Print1toNnumbers : public Work
 {
 public:
-    virtual void Execute() override;
+    bool Execute() override;
+    ~Print1toNnumbers() = default;
+
 };
 
 

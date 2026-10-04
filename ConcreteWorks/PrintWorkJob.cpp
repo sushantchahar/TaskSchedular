@@ -1,12 +1,8 @@
 #include "PrintWorkJob.h"
 #include <iostream>
 
-void PrintWorkJob::Execute()
+bool PrintWorkJob::Execute()
 {
     std::cout << "PrintWorkJob Execute() executed" << "\n";
+    return true;
 }
-
-// PrintWorkJob::~PrintWorkJob()
-// {
-//     std::cout << "PrintWorkJob Destructor Execute() executed" << "\n";
-// }

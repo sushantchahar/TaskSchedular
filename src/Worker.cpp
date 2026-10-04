@@ -2,6 +2,9 @@
 #include <iostream>
 using namespace std;
 
+Worker::Worker(const std::string& name) : _Name(name)
+{}
+
 void Worker::ReceiveJob(Job& job)
 {
     _CurrentJob = ref(job);
@@ -22,7 +25,17 @@ void Worker::ExecuteJob()
     }
 
     auto& job = _CurrentJob->get();
-    job.GetWork().Execute();
+    bool isExecuted = job.GetWork().Execute();
+
+    if (isExecuted)
+    {
+        job.SetState(ExecutionState::Completed);
+    }
+
+    else
+    {
+        job.SetState(ExecutionState::Failed);
+    }
 
     // Once job completes
     _CurrentJob.reset();
@@ -31,4 +44,9 @@ void Worker::ExecuteJob()
 void Worker::TriggerWorker()
 {
     Worker::ExecuteJob();
+}
+
+const string Worker::GetName()
+{
+    return _Name;
 }

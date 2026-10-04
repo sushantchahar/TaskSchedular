@@ -18,7 +18,6 @@ int main()
     Job job1(
         "PrintWork",
         "Print work job",
-        ExecutionState::Failed,
         Priority::Low,
         move(work)
     );

@@ -40,7 +40,6 @@ int main()
     Job* job1 = new Job(
         name,
         description,
-        state,
         priority,
         move(work)
     );
