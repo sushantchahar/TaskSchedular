@@ -25,5 +25,4 @@ add_executable(TaskSchedular main.cpp
         header/JobRegistry.h
         src/TaskSchedular.cpp
         header/TaskSchedular.h
-        "tests/Test5(5 October 2026).cpp"
 )
