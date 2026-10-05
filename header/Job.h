@@ -20,9 +20,19 @@ private:
 
 // Operations
 public:
-    // Constructor
-    // Empty Job
-    Job();
+    // Constructors
+    // No empty job can exist
+    Job() = delete;
+
+    // Copy constructors not allowed
+    Job(const Job&) = delete;
+    Job operator=(const Job&) = delete;
+
+    // Move constructors
+    Job(Job&&) = default;
+    Job& operator=(Job&&) = default;
+
+    // Job creation constructor
     Job(std::string name, std::string description, Priority priority, std::unique_ptr<Work> work);
 
     // Getters

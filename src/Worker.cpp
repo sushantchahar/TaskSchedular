@@ -26,7 +26,6 @@ void Worker::ExecuteJob()
 
     auto& job = _CurrentJob->get();
     job.SetState(ExecutionState::Running);
-    cout << "Execution State:- " << ((job.GetState() == ExecutionState::Running) ? "Running" : "Anything else") << "\n";
 
     try
     {
