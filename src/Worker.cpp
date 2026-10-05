@@ -25,14 +25,24 @@ void Worker::ExecuteJob()
     }
 
     auto& job = _CurrentJob->get();
-    bool isExecuted = job.GetWork().Execute();
+    job.SetState(ExecutionState::Running);
+    cout << "Execution State:- " << ((job.GetState() == ExecutionState::Running) ? "Running" : "Anything else") << "\n";
 
-    if (isExecuted)
+    try
     {
-        job.SetState(ExecutionState::Completed);
-    }
+        bool isExecuted = job.GetWork().Execute();
 
-    else
+        if (isExecuted)
+        {
+            job.SetState(ExecutionState::Completed);
+        }
+
+        else
+        {
+            job.SetState(ExecutionState::Failed);
+        }
+    }
+    catch (exception& e)
     {
         job.SetState(ExecutionState::Failed);
     }

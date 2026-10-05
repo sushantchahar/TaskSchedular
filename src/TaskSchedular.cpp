@@ -7,10 +7,10 @@ _JobRegistry(jobRegistry),
 _Schedular(schedular)
 {}
 
-void TaskSchedular::SubmitJob(Job& job)
+void TaskSchedular::SubmitJob(Job job)
 {
     const int id = job.GetId();
-    _JobRegistry.AddJob(job);
+    _JobRegistry.AddJob(move(job));
     _JobQueue.AddJob(id);
 }
 

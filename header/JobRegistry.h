@@ -10,7 +10,7 @@ private:
     std::unordered_map<int, Job> _Jobs;
 
 public:
-    void AddJob(Job& job);
+    void AddJob(Job job);
     std::optional<std::reference_wrapper<Job>> GetJob(const int id);
     void RemoveJob(const int id);
 };

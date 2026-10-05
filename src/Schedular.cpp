@@ -14,10 +14,10 @@ optional<reference_wrapper<Job>> Schedular::SelectJob()
 void Schedular::DispatchJob()
 {
     auto SelectedJob = SelectJob();
-    Worker &SelectedWorker = SelectWorker();
 
     if (SelectedJob)
     {
+        Worker &SelectedWorker = SelectWorker();
         SelectedWorker.ReceiveJob(SelectedJob->get());
         SelectedWorker.TriggerWorker();
     }

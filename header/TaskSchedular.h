@@ -13,7 +13,7 @@ private:
 
 public:
     TaskSchedular(JobQueue& _JobQueue, JobRegistry& _JobRegistry, Schedular& _Schedular);
-    void SubmitJob(Job& job);
+    void SubmitJob(Job job);
     void Execute();
 };
 
