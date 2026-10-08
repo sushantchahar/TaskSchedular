@@ -25,4 +25,7 @@ add_executable(TaskSchedular main.cpp
         header/JobRegistry.h
         src/TaskSchedular.cpp
         header/TaskSchedular.h
+        src/WorkerPool.cpp
+        header/WorkerPool.h
+        header/WorkerState.h
 )
