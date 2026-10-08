@@ -48,6 +48,7 @@ void Worker::ExecuteJob()
 
     // Once job completes
     _CurrentJob.reset();
+    MarkAvailable();
 }
 
 void Worker::TriggerWorker()
@@ -58,4 +59,19 @@ void Worker::TriggerWorker()
 const string Worker::GetName()
 {
     return _Name;
+}
+
+void Worker::MarkBusy()
+{
+    _WorkerState = WorkerState::Busy;
+}
+
+void Worker::MarkAvailable()
+{
+    _WorkerState = WorkerState::Available;
+}
+
+WorkerState Worker::GetState() const
+{
+    return _WorkerState;
 }

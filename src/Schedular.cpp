@@ -1,7 +1,8 @@
 #include "../header/Schedular.h"
+#include <iostream>
 using namespace std;
 
-Schedular::Schedular(JobQueue& jobQueue, Worker& worker, JobRegistry& registry) : _JobQueue(jobQueue), _Worker(worker), _JobRegistry(registry) {}
+Schedular::Schedular(JobQueue& jobQueue, WorkerPool& workerPool, JobRegistry& registry) : _JobQueue(jobQueue), _WorkerPool(workerPool), _JobRegistry(registry) {}
 
 optional<reference_wrapper<Job>> Schedular::SelectJob()
 {
@@ -17,15 +18,19 @@ void Schedular::DispatchJob()
 
     if (SelectedJob)
     {
-        Worker &SelectedWorker = SelectWorker();
+        auto SelectedWorkerReference = SelectWorker();
+        if (!SelectedWorkerReference)
+            return;
+
+        Worker& SelectedWorker = SelectedWorkerReference->get();
         SelectedWorker.ReceiveJob(SelectedJob->get());
         SelectedWorker.TriggerWorker();
     }
 }
 
-Worker& Schedular::SelectWorker()
+optional<reference_wrapper<Worker>> Schedular::SelectWorker()
 {
-    return _Worker;
+    return _WorkerPool.AcquireWorker();
 }
 
 // temporary for debugging and testing
