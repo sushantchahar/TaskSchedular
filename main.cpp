@@ -1,13 +1,13 @@
 #include <iostream>
 #include <cassert>
 
-#include "header/WorkerPool.h"
-#include "header/Worker.h"
-#include "header/Job.h"
-#include "header/JobRegistry.h"
-#include "header/JobQueue.h"
-#include "header/Schedular.h"
-#include "header/TaskSchedular.h"
+#include <taskscheduler/WorkerPool.h>
+#include <taskscheduler/Worker.h>
+#include <taskscheduler/Job.h>
+#include <taskscheduler/JobRegistry.h>
+#include <taskscheduler/JobQueue.h>
+#include <taskscheduler/Schedular.h>
+#include <taskscheduler/TaskSchedular.h>
 
 using namespace std;
 

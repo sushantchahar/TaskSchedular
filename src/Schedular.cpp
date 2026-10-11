@@ -1,5 +1,12 @@
-#include "../header/Schedular.h"
+#include <taskscheduler/Schedular.h>
 #include <iostream>
+#include <optional>
+
+#include "taskscheduler/Job.h"
+#include "taskscheduler/JobQueue.h"
+#include "taskscheduler/JobRegistry.h"
+#include "taskscheduler/Worker.h"
+#include "taskscheduler/WorkerPool.h"
 using namespace std;
 
 Schedular::Schedular(JobQueue& jobQueue, WorkerPool& workerPool, JobRegistry& registry) : _JobQueue(jobQueue), _WorkerPool(workerPool), _JobRegistry(registry) {}
