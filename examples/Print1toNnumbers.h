@@ -1,6 +1,6 @@
 #ifndef TASKSCHEDULAR_PRINT1TONNUMBERS_H
 #define TASKSCHEDULAR_PRINT1TONNUMBERS_H
-#include "../header/Work.h"
+#include <taskscheduler/Work.h>
 
 class Print1toNnumbers : public Work
 {

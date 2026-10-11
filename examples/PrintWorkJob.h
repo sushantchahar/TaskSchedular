@@ -1,6 +1,6 @@
 #ifndef TASKSCHEDULAR_PRINTWORKJOB_H
 #define TASKSCHEDULAR_PRINTWORKJOB_H
-#include "../header/Work.h"
+#include <taskscheduler/Work.h>
 
 
 class PrintWorkJob : public Work

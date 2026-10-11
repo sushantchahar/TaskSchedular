@@ -1,4 +1,4 @@
-#include "../header/JobRegistry.h"
+#include <taskscheduler/JobRegistry.h>
 using namespace std;
 
 void JobRegistry::AddJob(Job job)
