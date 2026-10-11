@@ -1,4 +1,4 @@
-#include "../header/JobQueue.h"
+#include <taskscheduler/JobQueue.h>
 using namespace std;
 
 void JobQueue::AddJob(const int id)
